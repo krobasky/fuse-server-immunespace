@@ -43,7 +43,7 @@ git clone --recursive http://github.com/RENCI/<your-repo-name>
  - [ ] **docker-compose.yml**: replace `fuse-appliance-template` with your repo's name and customize accordingly
  - [ ] **requirements.txt**: add your *version-locked* library requirements to the list
  - [ ] **sample.env**: add any required environmental variables, don't forget to also document them in this readme
- - [ ] **api/openapi.yml**: 
+ - [ ] **api/openapi/api.yml**: 
    - [ ]  Search for all occurrences of `fuse-appliance-template` and replace
    - [ ] Define and add endpoints for your appliance
    - [ ] Define the openApi for your appliance, adding an `operationId:` for each endpoint using pattern `api.get_<endpoint>`
