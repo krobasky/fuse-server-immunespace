@@ -36,7 +36,7 @@ Note, an applianece must specify a pluginType, so for the purpose of this demons
 ```
 git clone --recursive http://github.com/RENCI/<your-repo-name>
 ```
-* Make sure the following passes exactly 1 test: `./tests/test.sh`
+* Follow the steps in 'configuration' below, and them make sure the following passes exactly 1 test: `./tests/test.sh`
 * Edit this README.md file and replace all occurrences of `fuse-appliance-template` with your repo's name
 * Update the source files appropriately:
  - [ ] **config.json**: describe your appliances pluginType ["s":"Server", "m":"Mapper", "a":"Analysis"], required parameters, supported selector values, and supported/required objectVariables
