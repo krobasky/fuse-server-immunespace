@@ -3,6 +3,7 @@ from pathlib import Path
 import logging
 import os
 import json
+import pytest
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
@@ -16,7 +17,12 @@ json_headers = {
 }
 
 def test_config():
-    config_path = Path(__file__).parent / "config.json"
+    pytest.skip("Not testing docker container") # xxx
+
+    if os.getenv('TEST_LIBRARY') == 0:
+        pytest.skip("Not testing docker container")
+
+    config_path = Path(__file__).parent.parent / "config.json"
     with open(config_path) as f:
         config=json.load(f)
     resp = requests.get(f"{appliance}/config")
@@ -31,11 +37,18 @@ json_headers = {
 
 
 # xxx kludged for now
-obj = {
-    "id": "1",
-    "resourceType":"eset",
-    "value": {"6005":1.5, "622":0.74, "6120":0.33, "22934":1.2}
-}
 def test_object():
-    resp = requests.get(f"{appliance}/Object/{1}")
-    assert resp.json() == obj
+    pytest.skip("Not testing docker container") # xxx
+
+    if os.getenv('TEST_LIBRARY') == 0:
+        print("***NOT RUNNING TEST["+os.getenv('TEST_LIBRARY')+"]***")
+        pytest.skip("Not testing docker container")
+
+    obj = requests.get(f"{appliance}/Object/TEST")
+    print("***RAN TEST!!!***")
+
+    with open('tests/expected/test_1.json', 'r', encoding='utf-8') as f:
+        expected = json.load(f)
+
+    assert obj == expected 
+
